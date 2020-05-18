@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 public class LeapYearChecker{
@@ -15,8 +16,8 @@ public class LeapYearChecker{
                 return;
             }
 
-            int year = Integer.parseInt(strYear);
-            if(year<0){
+            BigInteger year = new BigInteger(strYear);
+            if(year.compareTo(BigInteger.ZERO)==-1){
                 throw new Exception("Year cannot be negative.");
             }
 
@@ -30,12 +31,12 @@ public class LeapYearChecker{
         }
     }
 
-    private static boolean isLeapYear(int year) {
-        if(year%4!=0){
+    private static boolean isLeapYear(BigInteger year) {
+        if(!year.remainder(new BigInteger("4")).equals(BigInteger.ZERO)){
             return false;
         }
 
-        if(year%100==0 && year%400!=0){
+        if(year.remainder(new BigInteger("100")).equals(BigInteger.ZERO) && !year.remainder(new BigInteger("400")).equals(BigInteger.ZERO)){
             return false;
         }
 
