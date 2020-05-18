@@ -16,6 +16,10 @@ public class LeapYearChecker{
             }
 
             int year = Integer.parseInt(strYear);
+            if(year<0){
+                throw new Exception("Year cannot be negative.");
+            }
+
             String leapYearPrint = " is a Leap Year.";
             
             if(!isLeapYear(year)){
